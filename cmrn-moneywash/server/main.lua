@@ -1,27 +1,27 @@
-dlnCore = nil
-TriggerEvent('dlnCore:GetObject', function(obj) dlnCore = obj end)
+QBCore = nil
+TriggerEvent('QBCore:GetObject', function(obj) QBCore = obj end)
 
-RegisterNetEvent("dln-moneywash:server:checkInv")
-AddEventHandler("dln-moneywash:server:checkInv", function()
+RegisterNetEvent("QB-moneywash:server:checkInv")
+AddEventHandler("QB-moneywash:server:checkInv", function()
     local src = source
-    local Player = dlnCore.Functions.GetPlayer(src)
+    local Player = QBCore.Functions.GetPlayer(src)
 
         if Player.Functions.GetItemByName('markedbills') ~= nil then
             local amt = Player.Functions.GetItemByName('markedbills').amount
-            TriggerClientEvent('dln-moneywash:client:startTimer', src, amt)
-            TriggerClientEvent('dlnCore:Notify', src, 'You put the bills in the washer.', 'success')
+            TriggerClientEvent('QB-moneywash:client:startTimer', src, amt)
+            TriggerClientEvent('QBCore:Notify', src, 'You put the bills in the washer.', 'success')
             Player.Functions.RemoveItem('markedbills', amt)
  
         else
-            TriggerClientEvent('dlnCore:Notify', src, 'You have no marked bills.', 'error') 
+            TriggerClientEvent('QBCore:Notify', src, 'You have no marked bills.', 'error') 
         end
 
 end)
 
-RegisterNetEvent("dln-moneywash:server:giveMoney")
-AddEventHandler("dln-moneywash:server:giveMoney", function(amt)
+RegisterNetEvent("QB-moneywash:server:giveMoney")
+AddEventHandler("QB-moneywash:server:giveMoney", function(amt)
     local src = source
-    local Player = dlnCore.Functions.GetPlayer(src)
+    local Player = QBCore.Functions.GetPlayer(src)
     payment = amt 
     Player.Functions.AddMoney('cash', payment)  
 end)
