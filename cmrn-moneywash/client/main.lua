@@ -1,28 +1,28 @@
-dlnCore = nil
+QBCore = nil
 
 Citizen.CreateThread(function()
     while true do
         Citizen.Wait(10)
-        if dlnCore == nil then
-            TriggerEvent('dlnCore:GetObject', function(obj) dlnCore = obj end)
+        if QBCore == nil then
+            TriggerEvent('QBCore:GetObject', function(obj) QBCore = obj end)
             Citizen.Wait(200)
         end
     end
 end)
 
-RegisterNetEvent('dlnCore:Client:OnPlayerLoaded')
-AddEventHandler('dlnCore:Client:OnPlayerLoaded', function()
-    PlayerJob = dlnCore.Functions.GetPlayerData().job
+RegisterNetEvent('QBCore:Client:OnPlayerLoaded')
+AddEventHandler('QBCore:Client:OnPlayerLoaded', function()
+    PlayerJob = QBCore.Functions.GetPlayerData().job
     onDuty = true
 end)
 
-RegisterNetEvent('dlnCore:Client:SetDuty')
-AddEventHandler('dlnCore:Client:SetDuty', function(duty)
+RegisterNetEvent('QBCore:Client:SetDuty')
+AddEventHandler('QBCore:Client:SetDuty', function(duty)
     onDuty = duty
 end)
 
-RegisterNetEvent('dlnCore:Client:OnJobUpdate')
-AddEventHandler('dlnCore:Client:OnJobUpdate', function(JobInfo)
+RegisterNetEvent('QBCore:Client:OnJobUpdate')
+AddEventHandler('QBCore:Client:OnJobUpdate', function(JobInfo)
     PlayerJob = JobInfo
     onDuty = true
 end)
@@ -86,7 +86,7 @@ Citizen.CreateThread(function(amt)
                     DrawText3D(washLocations.pOne.x, washLocations.pOne.y, washLocations.pOne.z, "~g~E~w~ - Start Washer")
                         if IsControlJustReleased(1, Keys['E']) then
                             WashAnimation()
-                            dlnCore.Functions.Progressbar("bills_wash", "putting marked bill's into the washer...", math.random(5000, 10000), false, true, {
+                            QBCore.Functions.Progressbar("bills_wash", "putting marked bill's into the washer...", math.random(5000, 10000), false, true, {
                                 disableMovement = false,
                                 disableCarMovement = false,
                                 disableMouse = false,
@@ -96,13 +96,13 @@ Citizen.CreateThread(function(amt)
                             anim = "car_bomb_mechanic",
                             flags = 16,
                             }, {}, {}, function() -- Done
-                                TriggerServerEvent('dln-moneywash:server:checkInv', amt)
+                                TriggerServerEvent('QB-moneywash:server:checkInv', amt)
                                 StopAnimTask(GetPlayerPed(-1), "mp_car_bomb", "car_bomb_mechanic", 1.0)
                                 washer = 1
 
                     
                             end, function()
-                                dlnCore.Functions.Notify("Canceled..", "error")
+                                QBCore.Functions.Notify("Canceled..", "error")
                             end)                        
                         end
                         
@@ -119,7 +119,7 @@ Citizen.CreateThread(function(amt)
                     DrawText3D(washLocations.pTwo.x, washLocations.pTwo.y, washLocations.pTwo.z, "~g~E~w~ - Start Washer")
                         if IsControlJustReleased(1, Keys['E']) then
                             WashAnimation()
-                            dlnCore.Functions.Progressbar("bills_wash", "putting marked bill's into the washer...", math.random(5000, 10000), false, true, {
+                            QBCore.Functions.Progressbar("bills_wash", "putting marked bill's into the washer...", math.random(5000, 10000), false, true, {
                                 disableMovement = false,
                                 disableCarMovement = false,
                                 disableMouse = false,
@@ -129,13 +129,13 @@ Citizen.CreateThread(function(amt)
                             anim = "car_bomb_mechanic",
                             flags = 16,
                             }, {}, {}, function() -- Done
-                                TriggerServerEvent('dln-moneywash:server:checkInv', amt)
+                                TriggerServerEvent('QB-moneywash:server:checkInv', amt)
                                 StopAnimTask(GetPlayerPed(-1), "mp_car_bomb", "car_bomb_mechanic", 1.0)
                                 washer = 2
 
                     
                             end, function()
-                                dlnCore.Functions.Notify("Canceled..", "error")
+                                QBCore.Functions.Notify("Canceled..", "error")
                             end)                        
                         end
                         
@@ -152,7 +152,7 @@ Citizen.CreateThread(function(amt)
                     DrawText3D(washLocations.pThree.x, washLocations.pThree.y, washLocations.pThree.z, "~g~E~w~ - Start Washer")
                         if IsControlJustReleased(1, Keys['E']) then
                             WashAnimation()
-                            dlnCore.Functions.Progressbar("bills_wash", "putting marked bill's into the washer...", math.random(5000, 10000), false, true, {
+                            QBCore.Functions.Progressbar("bills_wash", "putting marked bill's into the washer...", math.random(5000, 10000), false, true, {
                                 disableMovement = false,
                                 disableCarMovement = false,
                                 disableMouse = false,
@@ -162,13 +162,13 @@ Citizen.CreateThread(function(amt)
                             anim = "car_bomb_mechanic",
                             flags = 16,
                             }, {}, {}, function() -- Done
-                                TriggerServerEvent('dln-moneywash:server:checkInv', amt)
+                                TriggerServerEvent('QB-moneywash:server:checkInv', amt)
                                 StopAnimTask(GetPlayerPed(-1), "mp_car_bomb", "car_bomb_mechanic", 1.0)
                                 washer = 3
 
                     
                             end, function()
-                                dlnCore.Functions.Notify("Canceled..", "error")
+                                QBCore.Functions.Notify("Canceled..", "error")
                             end)                        
                         end
                         
@@ -186,7 +186,7 @@ Citizen.CreateThread(function(amt)
                     DrawText3D(washLocations.pFour.x, washLocations.pFour.y, washLocations.pFour.z, "~g~E~w~ - Start Washer")
                         if IsControlJustReleased(1, Keys['E']) then
                             WashAnimation()
-                            dlnCore.Functions.Progressbar("bills_wash", "putting marked bill's into the washer...", math.random(5000, 10000), false, true, {
+                            QBCore.Functions.Progressbar("bills_wash", "putting marked bill's into the washer...", math.random(5000, 10000), false, true, {
                                 disableMovement = false,
                                 disableCarMovement = false,
                                 disableMouse = false,
@@ -196,11 +196,11 @@ Citizen.CreateThread(function(amt)
                             anim = "car_bomb_mechanic",
                             flags = 16,
                             }, {}, {}, function() -- Done
-                                TriggerServerEvent('dln-moneywash:server:checkInv', amt)
+                                TriggerServerEvent('QB-moneywash:server:checkInv', amt)
                                 StopAnimTask(GetPlayerPed(-1), "mp_car_bomb", "car_bomb_mechanic", 1.0)
                                 washer = 4    
                             end, function()
-                                dlnCore.Functions.Notify("Canceled..", "error")
+                                QBCore.Functions.Notify("Canceled..", "error")
                             end)                        
                         end
                         
@@ -212,8 +212,8 @@ Citizen.CreateThread(function(amt)
     end 
 end)
 
-RegisterNetEvent('dln-moneywash:client:washTimer')
-AddEventHandler('dln-moneywash:client:washTimer', function()
+RegisterNetEvent('QB-moneywash:client:washTimer')
+AddEventHandler('QB-moneywash:client:washTimer', function()
         Citizen.Wait(0)
         local pos = GetEntityCoords(GetPlayerPed(-1))
         local ped = GetPlayerPed(-1)
@@ -277,7 +277,7 @@ function collectMoney(amt)
                 if GetDistanceBetweenCoords(pos.x, pos.y, pos.z, collectCoordX,collectCoordY, collectCoordZ, true) < 0.5 then      
                         if IsControlJustReleased(1, Keys['E']) and inRange then
                             WashAnimation()
-                            dlnCore.Functions.Progressbar("bills_collect", "collecting clean bill's from washer...", math.random(5000, 10000), false, true, {
+                            QBCore.Functions.Progressbar("bills_collect", "collecting clean bill's from washer...", math.random(5000, 10000), false, true, {
                                 disableMovement = false,
                                 disableCarMovement = false,
                                 disableMouse = false,
@@ -287,12 +287,12 @@ function collectMoney(amt)
                             anim = "car_bomb_mechanic",
                             flags = 16,
                             }, {}, {}, function() -- Done
-                                TriggerServerEvent('dln-moneywash:server:giveMoney', amt)
+                                TriggerServerEvent('QB-moneywash:server:giveMoney', amt)
                                 TriggerServerEvent("evidence:server:CreateFingerDrop", pos)
                                 StopAnimTask(GetPlayerPed(-1), "mp_car_bomb", "car_bomb_mechanic", 1.0)
                                 collect = false                        
                             end, function()
-                                dlnCore.Functions.Notify("Canceled..", "error")
+                                QBCore.Functions.Notify("Canceled..", "error")
                             end) 
 
                     end                   
@@ -302,22 +302,22 @@ function collectMoney(amt)
     end)
 end
 
-RegisterNetEvent('dln-moneywash:client:startTimer')
-AddEventHandler('dln-moneywash:client:startTimer', function(amt)
+RegisterNetEvent('QB-moneywash:client:startTimer')
+AddEventHandler('QB-moneywash:client:startTimer', function(amt)
 
     washing = true
     timer = math.ceil(0.005 * amt)
     if timer <= 60 then
         timer = 60
     end
-    TriggerEvent('dln-moneywash:client:washTimer')
+    TriggerEvent('QB-moneywash:client:washTimer')
 
         while washing do
             timer = timer - 1
             if timer <= 0 then
                 washing = false
                 collect = true
-                dlnCore.Functions.Notify('Your clean bills are ready to be collected.', 'success', 10000)
+                QBCore.Functions.Notify('Your clean bills are ready to be collected.', 'success', 10000)
 
                 collectMoney(amt)
             end
@@ -394,7 +394,7 @@ function passcode()
     if input == password then
         enter()
     else
-        dlnCore.Functions.Notify("Wrong passcode, get it from drug dealers!", "error")
+        QBCore.Functions.Notify("Wrong passcode, get it from drug dealers!", "error")
     end
 end
 
